@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Haaythein & Niar - Undangan</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html, body { width:100%; height:100%; overflow-x:hidden; scroll-behavior:smooth; }
+
+    section {
+      position: relative;
+      width: 100%;
+      height: 100vh; /* fullscreen tiap halaman */
+      overflow: hidden;
+    }
+
+    video.bg {
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      z-index:-1;
+    }
+
+    .overlay {
+      position: absolute;
+      top:0; left:0;
+      width:100%;
+      height:100%;
+      pointer-events:none;
+      z-index:1;
+    }
+
+    /* Nomor rekening copy button */
+    .rekening-box {
+      position:absolute;
+      bottom:20%;
+      left:50%;
+      transform:translateX(-50%);
+      text-align:center;
+      color:#fff;
+      font-size:1.2rem;
+      font-weight:bold;
+      z-index:2;
+    }
+
+    .rekening-box button {
+      margin-top:5px;
+      padding:8px 16px;
+      border-radius:20px;
+      border:none;
+      background:rgba(255,255,255,0.3);
+      color:#fff;
+      cursor:pointer;
+    }
+  </style>
+</head>
+<body>
+
+<!-- HALAMAN 2: Pengantin MP4 -->
+<section>
+  <video src="pengantin.mp4" autoplay muted loop playsinline class="bg"></video>
+</section>
+
+<!-- HALAMAN 3: Bride MP4 -->
+<section>
+  <video src="bride.mp4" autoplay muted loop playsinline class="bg"></video>
+</section>
+
+<!-- HALAMAN 4: Groom MP4 -->
+<section>
+  <video src="groom.mp4" autoplay muted loop playsinline class="bg"></video>
+</section>
+
+<!-- HALAMAN 5: Lokasi MP4 -->
+<section>
+  <video src="lokasi.mp4" autoplay muted loop playsinline class="bg"></video>
+</section>
+
+<!-- HALAMAN 6: Gallery MP4 -->
+<section>
+  <video src="gallery.mp4" autoplay muted loop playsinline class="bg"></video>
+</section>
+
+<!-- HALAMAN 7: Story MP4 -->
+<section>
+  <video src="story.mp4" autoplay muted loop playsinline class="bg"></video>
+</section>
+
+<!-- HALAMAN 8: Gift MP4 + 2 rekening -->
+<section>
+  <video src="gift.mp4" autoplay muted loop playsinline class="bg"></video>
+
+  <!-- Nomor rekening overlay -->
+  <div class="rekening-box">
+    <div style="margin-bottom:20px;">
+      <div id="Dimas">Dimas: 1111-2222-3333-4444</div>
+      <button onclick="copyRekening('dimas')">Copy</button>
+    </div>
+
+    <div>
+      <div id="Risa">Risa: 9876-5432-1098-7654</div>
+      <button onclick="copyRekening('Risa')">Copy</button>
+    </div>
+  </div>
+</section>
+
+<!-- HALAMAN 9: Penutup MP4 -->
+<section>
+  <video src="penutup.mp4" autoplay muted loop playsinline class="bg"></video>
+</section>
+
+<script>
+  function copyRekening(id) {
+    const rekening = document.getElementById(id).textContent;
+    navigator.clipboard.writeText(rekening).then(()=>{
+      alert("Nomor rekening berhasil di-copy!");
+    }).catch(err=>{
+      console.error("Gagal copy:", err);
+    });
+  }
+</script>
+
+</body>
+</html>
